@@ -1,0 +1,3 @@
+interface UserSlice {
+  userData: any;
+}

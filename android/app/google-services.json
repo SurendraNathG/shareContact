@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "815124646119",
+    "project_id": "sharecontact-71831",
+    "storage_bucket": "sharecontact-71831.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815124646119:android:c4faff7362f131f043fa42",
+        "android_client_info": {
+          "package_name": "com.sharecontact"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815124646119-lo0ro9u12rbkbfvc2eevneh5lrgvoq9u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sharecontact",
+            "certificate_hash": "8640a7560701bdda6a0d1ecb1e98fdd8bd7e0680"
+          }
+        },
+        {
+          "client_id": "815124646119-8l4m4if5a1qna2juvh9hr87a4vlcsibu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARPHtXXKNpbly3A9Epf2Xm_-js479PDKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "815124646119-8l4m4if5a1qna2juvh9hr87a4vlcsibu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
