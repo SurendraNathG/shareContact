@@ -1,33 +1,29 @@
 import React, {forwardRef} from 'react';
-import {StyleSheet, TextInput, TextInputProps, View} from 'react-native';
+import {StyleSheet, TextInput, TextInputProps, View,Text} from 'react-native';
 import colors from '../global/colors';
 import {getFontSize, height, width} from '../global/helper';
 
-const NumberInput = forwardRef<TextInput, TextInputProps>(
-  (
-    {
+const NumberInput =({
       value = '',
       onChangeText = () => {},
-      placeholder = '0',
+      placeholder = 'Phone Number',
       keyboardType,
       style = {},
       onBlur,
+      label='Phone Number',
       onFocus,
       onSubmitEditing,
       ...props
-    }: TextInputProps,
-    ref,
-  ) => {
+    }: any) => {
     return (
       <View style={styles.container}>
+        <Text style={styles.label}>{label}</Text>
         <TextInput
           value={value}
-          ref={ref}
           onChangeText={onChangeText}
           placeholder={placeholder}
           onBlur={onBlur}
           onFocus={onFocus}
-          maxLength={6}
           onSubmitEditing={onSubmitEditing}
           keyboardType={'decimal-pad'}
           style={[styles.input, style]}
@@ -35,24 +31,26 @@ const NumberInput = forwardRef<TextInput, TextInputProps>(
         />
       </View>
     );
-  },
-);
+    };
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: height(20),
-  },
   input: {
     height: height(62),
-    width: width(62),
     borderColor: colors.darkBlack,
     borderWidth: 1,
     borderRadius: getFontSize(8),
-    fontSize: getFontSize(16),
+    fontSize: getFontSize(14),
     color: colors.darkBlack,
-    paddingHorizontal: width(24),
-    textAlign: 'right',
+    paddingHorizontal: getFontSize(19),
     backgroundColor: colors.white,
+  },
+  container: {
+    marginTop: 0,
+  },
+  label: {
+    fontSize: getFontSize(12),
+    color: colors.darkBlack,
+    marginBottom: height(8),
   },
 });
 
