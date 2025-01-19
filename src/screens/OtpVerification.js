@@ -12,11 +12,11 @@ import {useAppSelector} from '../store';
 const OtpVerification = () => {
   const navigation = useNavigation();
   const [pin, setPin] = useState('');
-  const [error, setError] = useState<boolean>(false);
-  const [otpError, setOtpError] = useState<string | null>('');
+  const [error, setError] = useState(false);
+  const [otpError, setOtpError] = useState('');
   const {userData} = useAppSelector(state => state.user);
 
-  function handleNumberCheck(value: number, setValue: any) {
+  function handleNumberCheck(value, setValue) {
     if (isNumber(value)) {
       setValue(value);
     }
@@ -39,7 +39,7 @@ const OtpVerification = () => {
           <NumberInput
             value={pin}
             style={error && styles.error}
-            onChangeText={(text: any) => {
+            onChangeText={(text) => {
               handleNumberCheck(text, setPin);
             }}
           />

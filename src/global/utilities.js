@@ -1,29 +1,29 @@
-export function isEmailValid(email: any) {
+export function isEmailValid(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex?.test(email);
 }
 
-export function isUsernameValid(username: string) {
+export function isUsernameValid(username) {
   const userNameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
   return userNameRegex?.test(username);
 }
 
-export function isPhoneNumberValid(phoneNumber: any) {
+export function isPhoneNumberValid(phoneNumber) {
   const phoneRegex = /^\d{7,15}$/;
   return phoneRegex?.test(phoneNumber);
 }
 
-export function isPasswordValid(password: string): boolean {
+export function isPasswordValid(password) {
   const passwordRegex =
     /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
   return passwordRegex.test(password);
 }
 
-export function isNumber(input: number) {
+export function isNumber(input) {
   return !isNaN(input) && isFinite(input);
 }
 
-export function validatePassword(password: string): string | null {
+export function validatePassword(password) {
   if (!password) {
     return 'Password is required.';
   }
@@ -45,7 +45,7 @@ export function validatePassword(password: string): string | null {
   return null;
 }
 
-export function validateName(name: string): string | null {
+export function validateName(name) {
   if (!name) {
     return 'Name is required.';
   }
@@ -61,7 +61,7 @@ export function validateName(name: string): string | null {
   return null;
 }
 
-export function validateEmail(email: string): string | null {
+export function validateEmail(email) {
   if (!email) {
     return 'Email is required.';
   }
@@ -73,9 +73,9 @@ export function validateEmail(email: string): string | null {
 }
 
 export function validateConfirmPassword(
-  password: string,
-  confirmPassword: string,
-): string | null {
+  password,
+  confirmPassword,
+) {
   if (!confirmPassword) {
     return 'Re-Type password is required.';
   }

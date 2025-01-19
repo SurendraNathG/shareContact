@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import {store} from './src/store';
 import UserStack from './src/navigation/UserStack';
 
-function App(): React.JSX.Element {
+function App() {
   return (
     <GestureHandlerRootView style={styles.app}>
       <Provider store={store}>

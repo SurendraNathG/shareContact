@@ -1,4 +1,0 @@
-interface AppSlice {
-	appName: string;
-}
-

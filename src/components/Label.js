@@ -3,7 +3,7 @@ import {StyleSheet, Text} from 'react-native';
 import colors from '../global/colors';
 import {getFontSize} from '../global/helper';
 
-function Label({error}: {error: string | null}) {
+function Label({error}) {
   return <Text style={[styles.errorText]}>{error}</Text>;
 }
 

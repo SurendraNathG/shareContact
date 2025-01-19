@@ -3,33 +3,28 @@ import {StyleSheet, Text, TextInput, View} from 'react-native';
 import colors from '../global/colors';
 import {getFontSize, height} from '../global/helper';
 
-const EmailTextInput = ({
-  label = 'EMAIl',
+const NameTextInput = ({
+  label = 'NAME',
   value = '',
   onChangeText = () => {},
-  placeholder = 'example@gmail.com',
-  keyboardType = 'email-address',
+  placeholder = 'Enter Name',
+  keyboardType,
   style = {},
-  onFocus,
   onBlur,
-  autoCapitalize = 'none',
-  autoComplete = 'email',
-  wrapperStyle = {},
+  onFocus,
   ...props
-}: any) => {
+}) => {
   return (
-    <View style={[styles.container, wrapperStyle]}>
+    <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
-        keyboardType={keyboardType}
         onBlur={onBlur}
         onFocus={onFocus}
+        keyboardType={keyboardType}
         style={[styles.input, style]}
-        autoCapitalize={autoCapitalize}
-        autoComplete={autoComplete}
         {...props}
       />
     </View>
@@ -38,7 +33,7 @@ const EmailTextInput = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: height(16),
+    marginTop: 0,
   },
   label: {
     fontSize: getFontSize(12),
@@ -57,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EmailTextInput;
+export default NameTextInput;
