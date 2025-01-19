@@ -1,6 +1,5 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {
-  NativeStackNavigationOptions,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 import React, {memo} from 'react';
@@ -9,9 +8,10 @@ import colors from '../global/colors';
 import screenNames from '../global/screenNames';
 import OtpVerification from '../screens/OtpVerification';
 import Login from '../screens/Login';
+import Details from '../screens/Details'
 
 const Stack = createNativeStackNavigator();
-const screenOptions: NativeStackNavigationOptions = {
+const screenOptions = {
   headerShown: false,
   autoHideHomeIndicator: true,
   navigationBarHidden: true,
@@ -34,6 +34,10 @@ function UserStack() {
         <Stack.Screen
           name={screenNames.otpVerification}
           component={OtpVerification}
+        />
+        <Stack.Screen
+          name={screenNames.details}
+          component={Details}
         />
       </Stack.Navigator>
     </NavigationContainer>

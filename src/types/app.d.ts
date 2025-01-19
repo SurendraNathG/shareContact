@@ -1,3 +1,0 @@
-interface UserSlice {
-  userData: any;
-}

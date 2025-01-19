@@ -7,10 +7,6 @@ const Button = ({
   title,
   onPress,
   style,
-}: {
-  title: string;
-  onPress?: any;
-  style?: any;
 }) => {
   return (
     <TouchableOpacity

@@ -10,19 +10,19 @@ export default function () {
   const navigation = useNavigation();
 
   const push = useCallback(
-    (screenName: string, params?: Record<string, any>) => {
+    (screenName, params) => {
       navigation.dispatch(StackActions.push(screenName, params));
     },
     [navigation],
   );
   const navigate = useCallback(
-    (screenName: string, params?: Record<string, any>) => {
+    (screenName, params) => {
       navigation.dispatch(CommonActions.navigate(screenName, params));
     },
     [navigation],
   );
   const replace = useCallback(
-    (screenName: string, params?: Record<string, any>) => {
+    (screenName, params) => {
       navigation.dispatch(StackActions.replace(screenName, params));
     },
     [navigation],
@@ -33,7 +33,7 @@ export default function () {
     }
   }, [navigation]);
   const reset = useCallback(
-    (screenName: any) => {
+    (screenName) => {
       navigation.reset({
         index: 0,
         routes: [screenName],

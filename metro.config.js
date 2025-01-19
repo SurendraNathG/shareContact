@@ -17,10 +17,10 @@ const sourceFileExits = [
   ...sourceExts,
   'cjs',
   'mjs',
-  'ios.ts',
-  'ios.tsx',
-  'android.ts',
-  'android.tsx',
+  'ios.js',
+  'ios.jsx',
+  'android.js',
+  'android.jsx',
   'svg',
 ];
 
