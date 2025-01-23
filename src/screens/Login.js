@@ -9,6 +9,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  PermissionsAndroid, Platform
 } from 'react-native';
 import Label from '../components/Label';
 import NameTextInput from '../components/NameTextInput';
@@ -20,6 +21,8 @@ import useNavigation from '../global/useNavigation';
 import { isNumber, isUsernameValid, validateName } from '../global/utilities';
 import { useAppDispatch, useAppSelector } from '../store';
 import { setUserData } from '../store/slice/user.slice';
+import SimCardsManagerModule from 'react-native-sim-cards-manager';
+import PhoneNumberModal from './PhoneNumberModal';
 
 const Login = () => {
   const navigation = useNavigation();
@@ -42,6 +45,8 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const [isGenerateEpf, setIsGenerateEpf] = useState(false);
   const [confirmation, setConfirmation] = useState(null);
+  const [simData,setSimData]=useState('');
+  const [isModalVisible, setModalVisible] = useState(true);
 
   function handleFirstNameBlur() {
     setFirstNameError(validateName(firstName));
@@ -83,6 +88,55 @@ const Login = () => {
     return subscriber;
   }, []);
 
+  const requestPermission = async () => {
+    if (Platform.OS === 'android') {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.READ_PHONE_STATE,
+          {
+            title: 'App Permission',
+            message: 'This app needs access to your SIM card information.',
+            buttonNeutral: 'Not now',
+            buttonNegative: 'Cancel',
+            buttonPositive: 'OK',
+          }
+        );
+        return granted === PermissionsAndroid.RESULTS.GRANTED;
+      } catch (err) {
+        console.warn(err);
+        return false;
+      }
+    }
+    return true; 
+  };
+
+  useEffect(() => {
+    const fetchSimCards = async () => {
+      const hasPermission = await requestPermission();
+      if (hasPermission) {
+        SimCardsManagerModule.getSimCards({
+          title: 'App Permission',
+          message: 'Custom message',
+          buttonNeutral: 'Not now',
+          buttonNegative: 'Not OK',
+          buttonPositive: 'OK',
+        })
+          .then((array) => {
+            setSimData(array)
+          })
+          .catch((error) => {
+            console.error('Error fetching SIM cards:', error);
+          });
+      } else {
+      }
+    };
+
+    fetchSimCards();
+  }, []);
+
+
+  const PhoneNumberArray= simData&&simData?.map((item)=>item?.phoneNumber)?.filter((item)=>item!='');
+
   if (initializing) return null;
 
   async function signInWithPhoneNumber(phoneNumber) {
@@ -103,6 +157,11 @@ const Login = () => {
       setValue(value);
     }
   }
+
+  const handleSelect = (number) => {
+    setPhone(number)
+    setModalVisible(false);
+  };
 
   function handleSignButton() {
     if (
@@ -275,6 +334,12 @@ const Login = () => {
           </View>
         </View>
       )}
+      <PhoneNumberModal
+      isVisible={isModalVisible}
+      numbers={PhoneNumberArray}
+      onSelect={handleSelect}
+      onClose={() => setModalVisible(false)}
+      />
     </>
   );
 };
