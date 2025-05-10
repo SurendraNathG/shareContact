@@ -4,5 +4,6 @@ export default {
   phoneNumber: 'Phone Number',
   sendCode: 'Send Code',
   PhoneNumberSignIn: 'Phone Number Sign In',
-  generateEpf:'Generate EPF'
+  generateEpf: 'Generate EPF',
+  addNewAccount: 'Add New Account',
 };

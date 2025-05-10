@@ -14,7 +14,7 @@ const NumberInput =({
       onFocus,
       onSubmitEditing,
       ...props
-    }: any) => {
+    }) => {
     return (
       <View style={styles.container}>
         <Text style={styles.label}>{label}</Text>
@@ -25,7 +25,7 @@ const NumberInput =({
           onBlur={onBlur}
           onFocus={onFocus}
           onSubmitEditing={onSubmitEditing}
-          keyboardType={'decimal-pad'}
+          keyboardType={'phone-pad'}
           style={[styles.input, style]}
           {...props}
         />
